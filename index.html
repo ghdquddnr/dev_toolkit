@@ -29,14 +29,14 @@
             }
         }
     </script>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    
 
     <!-- Utility Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+    
     <script>
       // Create a promise that resolves when the jsdiff library is loaded.
       // This is a robust way to handle the async script loading without race conditions.
@@ -44,22 +44,14 @@
         window.markJsdiffAsLoaded = () => resolve(true);
       });
     </script>
-    <script src="https://unpkg.com/jsdiff@5.2.0/dist/jsdiff.min.js" onload="window.markJsdiffAsLoaded()"></script>
+    <script src="https://cdn.jsdelivr.net/npm/diff@8.0.2/dist/diff.min.js" onload="window.markJsdiffAsLoaded()"></script>
     <script src="https://unpkg.com/cronstrue/dist/cronstrue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     
-<script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
-    "react/": "https://aistudiocdn.com/react@^19.1.1/",
-    "react": "https://aistudiocdn.com/react@^19.1.1"
-  }
-}
-</script>
+
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     <div id="root"></div>
-    <script type="text/babel" src="./index.tsx"></script>
+    <script type="module" src="./index.tsx"></script>
 </body>
 </html>
