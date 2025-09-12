@@ -35,8 +35,8 @@ export const TOOLS: ToolDefinition[] = [
     },
     { 
         id: Tool.JSON_YAML, 
-        name: 'JSON/YAML', 
-        description: 'Convert between JSON and YAML', 
+        name: 'JSON/YAML/Props', 
+        description: 'Convert between JSON, YAML, & Properties', 
         icon: <CodeBracketIcon className="w-5 h-5" />,
         component: JsonYamlConverter 
     },

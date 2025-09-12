@@ -1,7 +1,7 @@
 
 export enum Tool {
     BASE64 = 'Base64 Encoder/Decoder',
-    JSON_YAML = 'JSON/YAML Converter',
+    JSON_YAML = 'JSON/YAML/Properties Converter',
     URL = 'URL Encoder/Decoder',
     HASH = 'Hash Generator',
     UUID = 'UUID/GUID Generator',

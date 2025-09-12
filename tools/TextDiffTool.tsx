@@ -1,4 +1,5 @@
 
+
 import React, { useState, useMemo } from 'react';
 import { ToolContainer } from '../components/ToolContainer';
 
@@ -10,14 +11,19 @@ interface DiffPart {
     removed?: boolean;
 }
 
-export const TextDiffTool: React.FC = () => {
+interface TextDiffToolProps {
+    isLibLoaded: boolean;
+}
+
+export const TextDiffTool: React.FC<TextDiffToolProps> = ({ isLibLoaded }) => {
     const [textA, setTextA] = useState('This is the original text.');
     const [textB, setTextB] = useState('This is the modified text, with changes.');
     const [viewType, setViewType] = useState<'inline' | 'side-by-side'>('inline');
     
     const diffResult: DiffPart[] = useMemo(() => {
+        if (!isLibLoaded || typeof Diff === 'undefined') return [];
         return Diff.diffChars(textA, textB);
-    }, [textA, textB]);
+    }, [textA, textB, isLibLoaded]);
     
     const renderInlineDiff = () => (
          <pre className="p-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md whitespace-pre-wrap break-all">
@@ -82,7 +88,13 @@ export const TextDiffTool: React.FC = () => {
                             <span className="ml-2">Side-by-side</span>
                         </label>
                     </div>
-                    {viewType === 'inline' ? renderInlineDiff() : renderSideBySideDiff()}
+                     {!isLibLoaded ? (
+                        <div className="p-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md">
+                            <p>Loading diffing library...</p>
+                        </div>
+                    ) : (
+                        viewType === 'inline' ? renderInlineDiff() : renderSideBySideDiff()
+                    )}
                 </div>
             </div>
         </ToolContainer>

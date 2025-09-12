@@ -5,15 +5,32 @@ import { Header } from './components/Header';
 import { Tool } from './types';
 import { TOOLS, TOOLS_MAP } from './constants';
 
+declare global {
+    interface Window {
+        jsdiffLoadedPromise?: Promise<boolean>;
+    }
+}
+
 export default function App() {
     const [activeToolId, setActiveToolId] = useState<Tool>(Tool.BASE64);
     const [theme, setTheme] = useState<'light' | 'dark'>('light');
+    const [isJsdiffLoaded, setIsJsdiffLoaded] = useState(false);
 
     useEffect(() => {
         const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
         setTheme(initialTheme);
+
+        // Wait for the jsdiff library to load using the promise defined in index.html
+        if (window.jsdiffLoadedPromise) {
+            window.jsdiffLoadedPromise.then(() => {
+                console.log('jsdiff library has successfully loaded.');
+                setIsJsdiffLoaded(true);
+            });
+        } else {
+            console.error('jsdiff loading promise not found. Check index.html setup.');
+        }
     }, []);
 
     useEffect(() => {
@@ -33,7 +50,15 @@ export default function App() {
         return TOOLS_MAP.get(activeToolId) || TOOLS[0];
     }, [activeToolId]);
     
-    const ActiveToolComponent = activeTool.component;
+    const renderActiveTool = () => {
+        const ActiveToolComponent = activeTool.component;
+        // Pass the library loaded state as a prop ONLY to the tools that need it.
+        if (activeTool.id === Tool.DIFF || activeTool.id === Tool.MERGE) {
+            const ToolWithProps = ActiveToolComponent as React.ComponentType<{ isLibLoaded: boolean }>;
+            return <ToolWithProps isLibLoaded={isJsdiffLoaded} />;
+        }
+        return <ActiveToolComponent />;
+    };
 
     return (
         <div className="flex h-screen w-screen overflow-hidden">
@@ -41,7 +66,7 @@ export default function App() {
             <div className="flex-1 flex flex-col">
                 <Header activeTool={activeTool} theme={theme} toggleTheme={toggleTheme} />
                 <div className="flex-1 overflow-auto bg-gray-100 dark:bg-gray-900">
-                    <ActiveToolComponent />
+                    {renderActiveTool()}
                 </div>
             </div>
         </div>

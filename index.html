@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +37,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js"></script>
+    <script>
+      // Create a promise that resolves when the jsdiff library is loaded.
+      // This is a robust way to handle the async script loading without race conditions.
+      window.jsdiffLoadedPromise = new Promise(resolve => {
+        window.markJsdiffAsLoaded = () => resolve(true);
+      });
+    </script>
+    <script src="https://unpkg.com/jsdiff@5.2.0/dist/jsdiff.min.js" onload="window.markJsdiffAsLoaded()"></script>
     <script src="https://unpkg.com/cronstrue/dist/cronstrue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     

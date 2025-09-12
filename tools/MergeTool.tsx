@@ -1,62 +1,50 @@
 
+
 import React, { useState, useCallback } from 'react';
 import { ToolContainer } from '../components/ToolContainer';
 import { CopyButton } from '../components/CopyButton';
 
 declare const Diff: any;
 
-export const MergeTool: React.FC = () => {
+interface MergeToolProps {
+    isLibLoaded: boolean;
+}
+
+export const MergeTool: React.FC<MergeToolProps> = ({ isLibLoaded }) => {
     const [baseText, setBaseText] = useState('const x = 1;\nconst y = 2;\nconst z = 3;');
     const [versionA, setVersionA] = useState('const x = 10;\nconst y = 2;\nconst z = 3;');
     const [versionB, setVersionB] = useState('const x = 1;\nconst y = 2;\nconst z = 30;');
     const [merged, setMerged] = useState('');
+    const [error, setError] = useState('');
 
     const performMerge = useCallback(() => {
-        const diffA = Diff.diffLines(baseText, versionA);
-        const diffB = Diff.diffLines(baseText, versionB);
-
-        const hunksA = Diff.structuredPatch('base', 'versionA', baseText, versionA).hunks;
-        const hunksB = Diff.structuredPatch('base', 'versionB', baseText, versionB).hunks;
-
-        let result = baseText.split('\n');
-        let offset = 0;
-        
-        // A very simplified merge logic. It applies changes from A, then B.
-        // If B's changes conflict with A's, it will create markers.
-        // A more robust implementation would require a true 3-way merge algorithm.
-
-        const mergedHunks = [...hunksA, ...hunksB].sort((a,b) => a.oldStart - b.oldStart);
-
-        for (const hunk of mergedHunks) {
-            const start = hunk.oldStart - 1 + offset;
-            const len = hunk.oldLines;
-            
-            const addedLines = hunk.lines.filter((l: string) => l.startsWith('+')).map((l: string) => l.substring(1));
-            
-            // This simple logic just replaces lines.
-            result.splice(start, len, ...addedLines);
-            offset += addedLines.length - len;
+        setError('');
+        if (!isLibLoaded || typeof Diff === 'undefined') {
+            setError('Error: The diffing library (jsdiff) has not loaded yet. Please wait a moment.');
+            return;
         }
-        
-        // Conflict detection (very basic)
-        // Let's use a simpler, more visual approach for now.
-        const diff3 = Diff.diff3_merge(versionA, baseText, versionB, true);
-        
-        let mergeResult = '';
-        for (const item of diff3) {
-            if (item.ok) {
-                mergeResult += item.ok.join('\n') + '\n';
-            } else if (item.conflict) {
-                mergeResult += '<<<<<<< Version A\n';
-                mergeResult += item.conflict.a.join('\n') + '\n';
-                mergeResult += '=======\n';
-                mergeResult += item.conflict.b.join('\n') + '\n';
-                mergeResult += '>>>>>>> Version B\n';
+
+        try {
+            const diff3 = Diff.diff3Merge(versionA, baseText, versionB, true);
+            
+            let mergeResult = '';
+            for (const item of diff3) {
+                if (item.ok) {
+                    mergeResult += item.ok.join('\n') + '\n';
+                } else if (item.conflict) {
+                    mergeResult += '<<<<<<< Version A\n';
+                    mergeResult += item.conflict.a.join('\n') + '\n';
+                    mergeResult += '=======\n';
+                    mergeResult += item.conflict.b.join('\n') + '\n';
+                    mergeResult += '>>>>>>> Version B\n';
+                }
             }
+            
+            setMerged(mergeResult.trim());
+        } catch (e: any) {
+            setError(`An error occurred during merge: ${e.message}`);
         }
-        
-        setMerged(mergeResult.trim());
-    }, [baseText, versionA, versionB]);
+    }, [baseText, versionA, versionB, isLibLoaded]);
 
     return (
         <ToolContainer title="Merge Tool" description="Perform a 3-way merge between a base version and two modified versions.">
@@ -94,11 +82,14 @@ export const MergeTool: React.FC = () => {
                 <div className="flex items-center">
                     <button
                         onClick={performMerge}
-                        className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                        disabled={!isLibLoaded}
+                        className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed"
                     >
-                        Merge
+                        {isLibLoaded ? 'Merge' : 'Loading Library...'}
                     </button>
                 </div>
+
+                {error && <p className="text-red-500 text-sm">{error}</p>}
                 
                 {merged && (
                     <div className="relative">
