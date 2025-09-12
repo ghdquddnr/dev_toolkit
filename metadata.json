@@ -1,0 +1,5 @@
+{
+  "name": "Web-Based Utility Toolkit",
+  "description": "A comprehensive web-based application featuring a collection of essential developer utility tools. The application provides a clean, modern UI styled with TailwindCSS, including a left sidebar for easy navigation between tools like Base64 encoding, JSON/YAML conversion, hash generation, and more.",
+  "requestFramePermissions": []
+}
