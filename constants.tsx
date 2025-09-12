@@ -11,6 +11,7 @@ import { MergeTool } from './tools/MergeTool';
 import { CronGenerator } from './tools/CronGenerator';
 import { TimestampConverter } from './tools/TimestampConverter';
 import { ColorPickerTool } from './tools/ColorPickerTool';
+import { LoremIpsumGenerator } from './tools/LoremIpsumGenerator';
 import {
     ArrowsRightLeftIcon,
     CodeBracketIcon,
@@ -22,6 +23,7 @@ import {
     ClockIcon,
     CalendarDaysIcon,
     SwatchIcon,
+    PencilSquareIcon,
 } from './components/Icons';
 
 
@@ -95,6 +97,13 @@ export const TOOLS: ToolDefinition[] = [
         description: 'Pick and convert colors', 
         icon: <SwatchIcon className="w-5 h-5" />,
         component: ColorPickerTool 
+    },
+    { 
+        id: Tool.LOREM_IPSUM, 
+        name: 'Lorem Ipsum', 
+        description: 'Generate placeholder text', 
+        icon: <PencilSquareIcon className="w-5 h-5" />,
+        component: LoremIpsumGenerator 
     },
 ];
 

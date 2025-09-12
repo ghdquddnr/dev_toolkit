@@ -26,16 +26,20 @@ export const MergeTool: React.FC<MergeToolProps> = ({ isLibLoaded }) => {
             let mergedText = '';
 
             diffResult.forEach((part: any) => {
+                // Ensure value ends with a newline if it doesn't already, for consistent processing
+                const value = part.value.endsWith('\n') ? part.value : part.value + '\n';
+                const lines = value.slice(0, -1).split('\n');
+
                 if (part.added) {
-                    mergedText += `+ ${part.value}`;
+                    mergedText += lines.map(line => `+ ${line}`).join('\n') + '\n';
                 } else if (part.removed) {
-                    mergedText += `- ${part.value}`;
+                    mergedText += lines.map(line => `- ${line}`).join('\n') + '\n';
                 } else {
-                    mergedText += `  ${part.value}`;
+                    mergedText += lines.map(line => `  ${line}`).join('\n') + '\n';
                 }
             });
             
-            setMerged(mergedText.trim());
+            setMerged(mergedText.trimEnd());
         } catch (e: any) {
             setError(`An error occurred during merge: ${e.message}`);
         }
@@ -47,7 +51,7 @@ export const MergeTool: React.FC<MergeToolProps> = ({ isLibLoaded }) => {
             <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-md text-blue-800 dark:text-blue-200">
                 <h3 className="font-semibold text-lg mb-2 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3.03.543M9 6v15H4.5M12 6.042V12m0-5.958A9.067 9.067 0 0 1 15 3.75c1.052 0 2.062.18 3.03.543M15 6v15H9M12 12.042V18m0-5.958A8.967 8.967 0 0 0 6 18c-1.052 0-2.062.18-3.03.543M6 18v3H1.5M12 18.042V21m0-2.958A9.067 9.067 0 0 1 15 21c1.052 0 2.062.18 3.03.543M18 18v3h3.5" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                     </svg>
                     How to Use the 2-Way Merge Tool
                 </h3>

@@ -47,7 +47,7 @@ export default function App() {
     };
 
     const activeTool = useMemo(() => {
-        return TOOLS_MAP.get(activeToolId) || TOOLS[0];
+        return TOOLS_MAP.get(activeToolId) ?? TOOLS[0];
     }, [activeToolId]);
     
     const renderActiveTool = () => {

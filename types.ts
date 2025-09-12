@@ -10,6 +10,7 @@ export enum Tool {
     CRON = 'Cron Expression Generator',
     TIMESTAMP = 'Timestamp Converter',
     COLOR_PICKER = 'Color Picker',
+    LOREM_IPSUM = 'Lorem Ipsum Generator',
 }
 
 export interface ToolDefinition {
