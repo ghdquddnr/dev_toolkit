@@ -1,0 +1,171 @@
+{
+  "sidebar": {
+    "title": "Boîte à Outils Dev",
+    "searchPlaceholder": "Rechercher des outils..."
+  },
+  "header": {
+    "toggleTheme": "Changer de thème"
+  },
+  "common": {
+    "reset": "Réinitialiser",
+    "generate": "Générer",
+    "convert": "Convertir",
+    "copyToClipboard": "Copier dans le presse-papiers",
+    "input": "Entrée",
+    "output": "Sortie",
+    "error": "Erreur"
+  },
+  "tool": {
+    "base64": {
+      "name": "Base64",
+      "description": "Encoder/décoder des données Base64",
+      "longDescription": "Encodez du texte ou des fichiers au format Base64, ou décodez-les.",
+      "encode": "Encoder",
+      "decode": "Décoder",
+      "inputPlaceholderEncode": "Saisissez le texte à encoder...",
+      "inputPlaceholderDecode": "Saisissez le Base64 à décoder...",
+      "outputPlaceholder": "Le résultat apparaîtra ici...",
+      "uploadEncode": "Téléverser un fichier à encoder",
+      "uploadDecode": "Téléverser un fichier à décoder",
+      "downloadResult": "Télécharger le résultat",
+      "errorInvalidInput": "Entrée non valide pour l'opération sélectionnée. Assurez-vous que le texte est valide pour le décodage.",
+      "errorReadFile": "Erreur lors de la lecture du fichier.",
+      "errorDownload": "Impossible de créer le fichier à télécharger."
+    },
+    "jsonyaml": {
+      "name": "JSON/YAML/Props",
+      "description": "Convertir entre JSON, YAML et Properties",
+      "longDescription": "Convertissez des données entre les formats JSON, YAML et .properties de Java.",
+      "inputLabel": "Entrée ({from})",
+      "outputLabel": "Sortie ({to})",
+      "inputPlaceholder": "Saisissez {from} ici...",
+      "conversionMode": "Mode de conversion",
+      "errorConversionFailed": "Échec de la conversion: {message}"
+    },
+    "url": {
+      "name": "Encodeur d'URL",
+      "description": "Encoder/décoder des composants d'URL",
+      "longDescription": "Encodez ou décodez des chaînes pour une utilisation dans les URL.",
+      "encode": "Encoder",
+      "decode": "Décoder",
+      "inputPlaceholder": "Saisissez une URL ou du texte...",
+      "outputPlaceholder": "Le résultat apparaîtra ici...",
+      "errorInvalidInput": "Entrée non valide pour le décodage."
+    },
+    "hash": {
+      "name": "Gén. de Hash",
+      "description": "Générer des hashs MD5, SHA",
+      "longDescription": "Générez des valeurs de hachage pour du texte ou des fichiers en utilisant divers algorithmes.",
+      "algorithm": "Algorithme",
+      "hashFile": "Hacher un fichier",
+      "textInput": "Saisie de texte",
+      "inputPlaceholder": "Saisissez le texte à hacher...",
+      "generatedHash": "Hash généré",
+      "outputPlaceholder": "Le résultat apparaîtra ici...",
+      "errorReadFile": "Erreur lors de la lecture du fichier."
+    },
+    "uuid": {
+      "name": "Gén. d'UUID",
+      "description": "Générer des UUID",
+      "longDescription": "Générez des identifiants uniques universels (UUID).",
+      "numberToGenerate": "Nombre à générer",
+      "generatedUuids": "UUID générés :"
+    },
+    "diff": {
+      "name": "Comparateur Texte",
+      "description": "Comparer deux blocs de texte",
+      "longDescription": "Comparez deux blocs de texte et mettez en évidence les différences.",
+      "originalText": "Texte original",
+      "modifiedText": "Texte modifié",
+      "differences": "Différences",
+      "inline": "En ligne",
+      "sideBySide": "Côte à côte",
+      "loadingLibrary": "Chargement de la bibliothèque de comparaison..."
+    },
+    "merge": {
+      "name": "Outil de Fusion",
+      "description": "Fusion de texte à 2 voies",
+      "longDescription": "Combinez deux versions de texte, en mettant en évidence les différences.",
+      "howToTitle": "Comment utiliser l'outil de fusion à 2 voies",
+      "versionA": "Version A",
+      "versionB": "Version B",
+      "merge": "Fusionner",
+      "loadingLibrary": "Chargement de la bibliothèque...",
+      "mergedResult": "Résultat de la fusion",
+      "outputPlaceholder": "Le résultat apparaîtra ici...",
+      "errorMerge": "Une erreur est survenue lors de la fusion: {message}",
+      "errorLibLoad": "Erreur : La bibliothèque de comparaison (jsdiff) n'a pas encore été chargée. Veuillez patienter un instant.",
+      "instructions": {
+        "1": "<strong>Version A :</strong> Collez la première version du texte ici.",
+        "2": "<strong>Version B :</strong> Collez la deuxième version du texte ici.",
+        "3": "Cliquez sur le bouton \"Fusionner\" pour combiner les textes.",
+        "4": "Les lignes uniques à la Version A seront préfixées par <code>-</code>.",
+        "5": "Les lignes uniques à la Version B seront préfixées par <code>+</code>.",
+        "6": "Les lignes communes seront préfixées par <code>  </code> (deux espaces)."
+      }
+    },
+    "cron": {
+      "name": "Gén. de Cron",
+      "description": "Créer des expressions cron",
+      "longDescription": "Créez des expressions cron avec une interface conviviale et consultez une explication en direct.",
+      "minute": "Minute",
+      "hour": "Heure",
+      "dayOfMonth": "Jour (Mois)",
+      "month": "Mois",
+      "dayOfWeek": "Jour (Semaine)",
+      "result": "Résultat",
+      "explanation": "Explication",
+      "errorInvalid": "Expression Cron invalide: {message}"
+    },
+    "timestamp": {
+      "name": "Horodatage",
+      "description": "Convertir des horodatages",
+      "longDescription": "Convertissez entre les horodatages Unix et les dates lisibles par l'homme.",
+      "inputLabel": "Entrée (Unix, ISO, etc.)",
+      "inputPlaceholder": "Saisissez un horodatage ou une date...",
+      "useCurrentTime": "Utiliser l'heure actuelle",
+      "unixTimestamp": "Horodatage Unix (secondes)",
+      "utc": "UTC",
+      "localTime": "Votre heure locale",
+      "relativeTime": "Temps relatif",
+      "errorInvalid": "Format de date ou d'horodatage non valide."
+    },
+    "color": {
+      "name": "Sélecteur Couleur",
+      "description": "Choisir et convertir des couleurs",
+      "longDescription": "Choisissez une couleur et obtenez ses valeurs dans différents formats.",
+      "colorPicker": "Sélecteur de couleur"
+    },
+    "lorem": {
+      "name": "Lorem Ipsum",
+      "description": "Générer du texte de remplissage",
+      "longDescription": "Générez du texte de remplissage en mots, phrases ou paragraphes.",
+      "count": "Nombre",
+      "type": "Type",
+      "paragraphs": "Paragraphes",
+      "sentences": "Phrases",
+      "words": "Mots",
+      "generatedText": "Texte généré",
+      "outputPlaceholder": "Lorem Ipsum apparaîtra ici..."
+    },
+    "regex": {
+      "name": "Gén. Regex (IA)",
+      "description": "Générer regex à partir de texte",
+      "longDescription": "Utilisez l'IA pour générer des expressions régulières à partir de descriptions en langage naturel.",
+      "promptLabel": "Décrivez le motif que vous souhaitez faire correspondre",
+      "promptPlaceholder": "ex: correspondre à une adresse e-mail valide",
+      "generatedRegex": "Regex Générée",
+      "outputPlaceholder": "La regex apparaîtra ici...",
+      "testStringLabel": "Chaîne de Test",
+      "testStringPlaceholder": "Saisissez les chaînes à tester par rapport à la regex, une par ligne.",
+      "testButton": "Tester",
+      "testResults": "Résultats du Test",
+      "match": "CORRESPOND",
+      "noMatch": "NE CORRESPOND PAS",
+      "generating": "Génération...",
+      "errorAPI": "Échec de la génération de la regex. Veuillez réessayer.",
+      "errorInvalidRegex": "Le motif n'est pas une expression régulière valide.",
+      "errorNoRegex": "Veuillez générer ou saisir un motif regex avant de tester."
+    }
+  }
+}

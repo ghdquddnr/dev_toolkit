@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 import { Tool } from './types';
 import { TOOLS, TOOLS_MAP } from './constants';
+import { I18nProvider } from './i18n';
 
 declare global {
     interface Window {
@@ -11,7 +11,7 @@ declare global {
     }
 }
 
-export default function App() {
+function AppContent() {
     const [activeToolId, setActiveToolId] = useState<Tool>(Tool.BASE64);
     const [theme, setTheme] = useState<'light' | 'dark'>('light');
     const [isJsdiffLoaded, setIsJsdiffLoaded] = useState(false);
@@ -22,7 +22,6 @@ export default function App() {
         const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
         setTheme(initialTheme);
 
-        // Wait for the jsdiff library to load using the promise defined in index.html
         if (window.jsdiffLoadedPromise) {
             window.jsdiffLoadedPromise.then(() => {
                 console.log('jsdiff library has successfully loaded.');
@@ -52,7 +51,6 @@ export default function App() {
     
     const renderActiveTool = () => {
         const ActiveToolComponent = activeTool.component;
-        // Pass the library loaded state as a prop ONLY to the tools that need it.
         if (activeTool.id === Tool.DIFF || activeTool.id === Tool.MERGE) {
             const ToolWithProps = ActiveToolComponent as React.ComponentType<{ isLibLoaded: boolean }>;
             return <ToolWithProps isLibLoaded={isJsdiffLoaded} />;
@@ -70,5 +68,14 @@ export default function App() {
                 </div>
             </div>
         </div>
+    );
+}
+
+
+export default function App() {
+    return (
+        <I18nProvider>
+            <AppContent />
+        </I18nProvider>
     );
 }

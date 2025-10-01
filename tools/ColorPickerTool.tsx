@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { ToolContainer } from '../components/ToolContainer';
 import { CopyButton } from '../components/CopyButton';
+import { useTranslation } from '../i18n';
 
-// Tiny, dependency-free color conversion functions
 const hexToRgb = (hex: string) => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
@@ -12,16 +12,13 @@ const hexToRgb = (hex: string) => {
     } : null;
 };
 
-const rgbToHex = (r: number, g: number, b: number) => 
-    "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
-
 const rgbToHsl = (r: number, g: number, b: number) => {
     r /= 255; g /= 255; b /= 255;
     const max = Math.max(r, g, b), min = Math.min(r, g, b);
     let h = 0, s, l = (max + min) / 2;
 
     if (max === min) {
-        h = s = 0; // achromatic
+        h = s = 0;
     } else {
         const d = max - min;
         s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
@@ -35,8 +32,11 @@ const rgbToHsl = (r: number, g: number, b: number) => {
     return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
 };
 
+const defaultColor = '#3B82F6';
+
 export const ColorPickerTool: React.FC = () => {
-    const [color, setColor] = useState('#3B82F6'); // Default to primary-500
+    const { t } = useTranslation();
+    const [color, setColor] = useState(defaultColor);
     
     const rgb = hexToRgb(color);
     const hsl = rgb ? rgbToHsl(rgb.r, rgb.g, rgb.b) : null;
@@ -50,6 +50,10 @@ export const ColorPickerTool: React.FC = () => {
             setColor(newHex.toUpperCase());
         }
     };
+
+    const handleReset = useCallback(() => {
+        setColor(defaultColor);
+    }, []);
 
     const ColorValueDisplay = ({ label, value }: { label: string; value: string }) => (
         <div className="relative">
@@ -65,7 +69,7 @@ export const ColorPickerTool: React.FC = () => {
     );
 
     return (
-        <ToolContainer title="Color Picker" description="Pick a color and get its values in different formats.">
+        <ToolContainer title={t('tool.color.name')} description={t('tool.color.longDescription')}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="flex justify-center items-center">
                     <div
@@ -75,7 +79,7 @@ export const ColorPickerTool: React.FC = () => {
                 </div>
                 <div className="space-y-4">
                     <div>
-                        <label htmlFor="color-picker-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Color Picker</label>
+                        <label htmlFor="color-picker-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('tool.color.colorPicker')}</label>
                         <input
                             id="color-picker-input"
                             type="color"
@@ -96,6 +100,14 @@ export const ColorPickerTool: React.FC = () => {
                     </div>
                     {rgb && <ColorValueDisplay label="RGB" value={`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`} />}
                     {hsl && <ColorValueDisplay label="HSL" value={`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`} />}
+                    <div className="pt-2">
+                        <button
+                            onClick={handleReset}
+                            className="px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600"
+                        >
+                            {t('common.reset')}
+                        </button>
+                    </div>
                 </div>
             </div>
         </ToolContainer>

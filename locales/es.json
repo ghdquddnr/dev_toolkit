@@ -1,0 +1,171 @@
+{
+  "sidebar": {
+    "title": "Kit de Herramientas",
+    "searchPlaceholder": "Buscar herramientas..."
+  },
+  "header": {
+    "toggleTheme": "Cambiar tema"
+  },
+  "common": {
+    "reset": "Reiniciar",
+    "generate": "Generar",
+    "convert": "Convertir",
+    "copyToClipboard": "Copiar al portapapeles",
+    "input": "Entrada",
+    "output": "Salida",
+    "error": "Error"
+  },
+  "tool": {
+    "base64": {
+      "name": "Base64",
+      "description": "Codificar/decodificar datos Base64",
+      "longDescription": "Codifica texto o archivos a formato Base64, o decodifícalos de nuevo.",
+      "encode": "Codificar",
+      "decode": "Decodificar",
+      "inputPlaceholderEncode": "Introduce texto para codificar...",
+      "inputPlaceholderDecode": "Introduce Base64 para decodificar...",
+      "outputPlaceholder": "El resultado aparecerá aquí...",
+      "uploadEncode": "Subir archivo para codificar",
+      "uploadDecode": "Subir archivo para decodificar",
+      "downloadResult": "Descargar resultado",
+      "errorInvalidInput": "Entrada no válida para la operación seleccionada. Asegúrate de que el texto sea válido para la decodificación.",
+      "errorReadFile": "Error al leer el archivo.",
+      "errorDownload": "No se pudo crear el archivo para descargar."
+    },
+    "jsonyaml": {
+      "name": "JSON/YAML/Props",
+      "description": "Convertir entre JSON, YAML y Properties",
+      "longDescription": "Convierte datos entre los formatos JSON, YAML y .properties de Java.",
+      "inputLabel": "Entrada ({from})",
+      "outputLabel": "Salida ({to})",
+      "inputPlaceholder": "Introduce {from} aquí...",
+      "conversionMode": "Modo de conversión",
+      "errorConversionFailed": "Error en la conversión: {message}"
+    },
+    "url": {
+      "name": "Codificador URL",
+      "description": "Codificar/decodificar componentes URL",
+      "longDescription": "Codifica o decodifica cadenas de texto para su uso en URLs.",
+      "encode": "Codificar",
+      "decode": "Decodificar",
+      "inputPlaceholder": "Introduce URL o texto...",
+      "outputPlaceholder": "El resultado aparecerá aquí...",
+      "errorInvalidInput": "Entrada no válida para decodificar."
+    },
+    "hash": {
+      "name": "Generador Hash",
+      "description": "Generar hashes MD5, SHA",
+      "longDescription": "Genera valores hash para texto o archivos usando varios algoritmos.",
+      "algorithm": "Algoritmo",
+      "hashFile": "Hashear archivo",
+      "textInput": "Entrada de texto",
+      "inputPlaceholder": "Introduce texto para hashear...",
+      "generatedHash": "Hash generado",
+      "outputPlaceholder": "El resultado aparecerá aquí...",
+      "errorReadFile": "Error al leer el archivo."
+    },
+    "uuid": {
+      "name": "Generador UUID",
+      "description": "Generar UUIDs",
+      "longDescription": "Genera identificadores únicos universales (UUIDs).",
+      "numberToGenerate": "Número a generar",
+      "generatedUuids": "UUIDs generados:"
+    },
+    "diff": {
+      "name": "Comparador Texto",
+      "description": "Comparar dos bloques de texto",
+      "longDescription": "Compara dos bloques de texto y resalta las diferencias.",
+      "originalText": "Texto original",
+      "modifiedText": "Texto modificado",
+      "differences": "Diferencias",
+      "inline": "En línea",
+      "sideBySide": "Lado a lado",
+      "loadingLibrary": "Cargando librería de comparación..."
+    },
+    "merge": {
+      "name": "Herramienta Fusión",
+      "description": "Fusión de texto de 2 vías",
+      "longDescription": "Combina dos versiones de texto, resaltando las diferencias.",
+      "howToTitle": "Cómo usar la Herramienta de Fusión de 2 Vías",
+      "versionA": "Versión A",
+      "versionB": "Versión B",
+      "merge": "Fusionar",
+      "loadingLibrary": "Cargando librería...",
+      "mergedResult": "Resultado de la fusión",
+      "outputPlaceholder": "El resultado aparecerá aquí...",
+      "errorMerge": "Ocurrió un error durante la fusión: {message}",
+      "errorLibLoad": "Error: La librería de comparación (jsdiff) aún no se ha cargado. Por favor, espera un momento.",
+      "instructions": {
+        "1": "<strong>Versión A:</strong> Pega la primera versión del texto aquí.",
+        "2": "<strong>Versión B:</strong> Pega la segunda versión del texto aquí.",
+        "3": "Haz clic en el botón \"Fusionar\" para combinar los textos.",
+        "4": "Las líneas únicas de la Versión A tendrán el prefijo <code>-</code>.",
+        "5": "Las líneas únicas de la Versión B tendrán el prefijo <code>+</code>.",
+        "6": "Las líneas comunes tendrán el prefijo <code>  </code> (dos espacios)."
+      }
+    },
+    "cron": {
+      "name": "Generador Cron",
+      "description": "Crear expresiones cron",
+      "longDescription": "Crea expresiones cron con una interfaz fácil de usar y ve una explicación en vivo.",
+      "minute": "Minuto",
+      "hour": "Hora",
+      "dayOfMonth": "Día (Mes)",
+      "month": "Mes",
+      "dayOfWeek": "Día (Semana)",
+      "result": "Resultado",
+      "explanation": "Explicación",
+      "errorInvalid": "Expresión Cron no válida: {message}"
+    },
+    "timestamp": {
+      "name": "Timestamp",
+      "description": "Convertir timestamps",
+      "longDescription": "Convierte entre timestamps de Unix y fechas legibles por humanos.",
+      "inputLabel": "Entrada (Unix, ISO, etc.)",
+      "inputPlaceholder": "Introduce timestamp o fecha...",
+      "useCurrentTime": "Usar hora actual",
+      "unixTimestamp": "Timestamp de Unix (segundos)",
+      "utc": "UTC",
+      "localTime": "Tu hora local",
+      "relativeTime": "Tiempo relativo",
+      "errorInvalid": "Formato de fecha o timestamp no válido."
+    },
+    "color": {
+      "name": "Selector Color",
+      "description": "Seleccionar y convertir colores",
+      "longDescription": "Elige un color y obtén sus valores en diferentes formatos.",
+      "colorPicker": "Selector de color"
+    },
+    "lorem": {
+      "name": "Lorem Ipsum",
+      "description": "Generar texto de relleno",
+      "longDescription": "Genera texto de relleno en palabras, frases o párrafos.",
+      "count": "Cantidad",
+      "type": "Tipo",
+      "paragraphs": "Párrafos",
+      "sentences": "Frases",
+      "words": "Palabras",
+      "generatedText": "Texto generado",
+      "outputPlaceholder": "Lorem Ipsum aparecerá aquí..."
+    },
+    "regex": {
+      "name": "Generador Regex (AI)",
+      "description": "Generar regex desde texto",
+      "longDescription": "Usa IA para generar expresiones regulares a partir de descripciones en lenguaje natural.",
+      "promptLabel": "Describe el patrón que quieres que coincida",
+      "promptPlaceholder": "ej., coincidir con una dirección de correo electrónico válida",
+      "generatedRegex": "Regex Generada",
+      "outputPlaceholder": "La regex aparecerá aquí...",
+      "testStringLabel": "Cadena de Prueba",
+      "testStringPlaceholder": "Introduce cadenas para probar contra la regex, una por línea.",
+      "testButton": "Probar",
+      "testResults": "Resultados de la Prueba",
+      "match": "COINCIDE",
+      "noMatch": "NO COINCIDE",
+      "generating": "Generando...",
+      "errorAPI": "No se pudo generar la regex. Por favor, inténtalo de nuevo.",
+      "errorInvalidRegex": "El patrón no es una expresión regular válida.",
+      "errorNoRegex": "Por favor, genera o introduce un patrón de regex antes de probar."
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "sidebar": {
+    "title": "开发者工具包",
+    "searchPlaceholder": "搜索工具..."
+  },
+  "header": {
+    "toggleTheme": "切换主题"
+  },
+  "common": {
+    "reset": "重置",
+    "generate": "生成",
+    "convert": "转换",
+    "copyToClipboard": "复制到剪贴板",
+    "input": "输入",
+    "output": "输出",
+    "error": "错误"
+  },
+  "tool": {
+    "base64": {
+      "name": "Base64",
+      "description": "编码/解码 Base64 数据",
+      "longDescription": "将文本或文件编码为 Base64 格式，或将其解码回来。",
+      "encode": "编码",
+      "decode": "解码",
+      "inputPlaceholderEncode": "输入要编码的文本...",
+      "inputPlaceholderDecode": "输入要解码的 Base64...",
+      "outputPlaceholder": "结果将显示在此处...",
+      "uploadEncode": "上传文件进行编码",
+      "uploadDecode": "上传文件进行解码",
+      "downloadResult": "下载结果",
+      "errorInvalidInput": "所选操作的输入无效。请确保文本对于解码有效。",
+      "errorReadFile": "读取文件时出错。",
+      "errorDownload": "无法创建用于下载的文件。"
+    },
+    "jsonyaml": {
+      "name": "JSON/YAML/属性",
+      "description": "在 JSON, YAML, 和属性文件间转换",
+      "longDescription": "在 JSON、YAML 和 Java .properties 格式之间转换数据。",
+      "inputLabel": "输入 ({from})",
+      "outputLabel": "输出 ({to})",
+      "inputPlaceholder": "在此处输入 {from}...",
+      "conversionMode": "转换模式",
+      "errorConversionFailed": "转换失败: {message}"
+    },
+    "url": {
+      "name": "URL 编码器",
+      "description": "编码/解码 URL 组件",
+      "longDescription": "编码或解码用于 URL 的字符串。",
+      "encode": "编码",
+      "decode": "解码",
+      "inputPlaceholder": "输入 URL 或文本...",
+      "outputPlaceholder": "结果将显示在此处...",
+      "errorInvalidInput": "无效的解码输入。"
+    },
+    "hash": {
+      "name": "哈希生成器",
+      "description": "生成 MD5, SHA 哈希",
+      "longDescription": "使用各种算法为文本或文件生成哈希值。",
+      "algorithm": "算法",
+      "hashFile": "哈希文件",
+      "textInput": "文本输入",
+      "inputPlaceholder": "输入要哈希的文本...",
+      "generatedHash": "生成的哈希",
+      "outputPlaceholder": "结果将显示在此处...",
+      "errorReadFile": "读取文件时出错。"
+    },
+    "uuid": {
+      "name": "UUID 生成器",
+      "description": "生成 UUID",
+      "longDescription": "生成通用唯一标识符 (UUID)。",
+      "numberToGenerate": "生成数量",
+      "generatedUuids": "生成的 UUID:"
+    },
+    "diff": {
+      "name": "文本比较",
+      "description": "比较两个文本块",
+      "longDescription": "比较两个文本块并突出显示差异。",
+      "originalText": "原始文本",
+      "modifiedText": "修改后的文本",
+      "differences": "差异",
+      "inline": "内联",
+      "sideBySide": "并排",
+      "loadingLibrary": "正在加载比较库..."
+    },
+    "merge": {
+      "name": "合并工具",
+      "description": "双向文本合并",
+      "longDescription": "合并两个文本版本，突出显示差异。",
+      "howToTitle": "如何使用双向合并工具",
+      "versionA": "版本 A",
+      "versionB": "版本 B",
+      "merge": "合并",
+      "loadingLibrary": "正在加载库...",
+      "mergedResult": "合并结果",
+      "outputPlaceholder": "结果将显示在此处...",
+      "errorMerge": "合并期间发生错误: {message}",
+      "errorLibLoad": "错误：比较库 (jsdiff) 尚未加载。请稍候。",
+      "instructions": {
+        "1": "<strong>版本 A:</strong> 在此处粘贴第一个文本版本。",
+        "2": "<strong>版本 B:</strong> 在此处粘贴第二个文本版本。",
+        "3": "点击“合并”按钮以合并文本。",
+        "4": "版本 A 独有的行将以 <code>-</code> 为前缀。",
+        "5": "版本 B 独有的行将以 <code>+</code> 为前缀。",
+        "6": "共同的行将以 <code>  </code> (两个空格) 为前缀。"
+      }
+    },
+    "cron": {
+      "name": "Cron 生成器",
+      "description": "创建 cron 表达式",
+      "longDescription": "使用用户友好的界面创建 cron 表达式并查看实时解释。",
+      "minute": "分钟",
+      "hour": "小时",
+      "dayOfMonth": "日(月)",
+      "month": "月",
+      "dayOfWeek": "星期(周)",
+      "result": "结果",
+      "explanation": "解释",
+      "errorInvalid": "无效的 Cron 表达式: {message}"
+    },
+    "timestamp": {
+      "name": "时间戳",
+      "description": "转换时间戳",
+      "longDescription": "在 Unix 时间戳和人类可读日期之间进行转换。",
+      "inputLabel": "输入 (Unix, ISO 等)",
+      "inputPlaceholder": "输入时间戳或日期...",
+      "useCurrentTime": "使用当前时间",
+      "unixTimestamp": "Unix 时间戳 (秒)",
+      "utc": "UTC",
+      "localTime": "您的本地时间",
+      "relativeTime": "相对时间",
+      "errorInvalid": "无效的日期或时间戳格式。"
+    },
+    "color": {
+      "name": "颜色选择器",
+      "description": "选择和转换颜色",
+      "longDescription": "选择一种颜色并获取其不同格式的值。",
+      "colorPicker": "颜色选择器"
+    },
+    "lorem": {
+      "name": "Lorem Ipsum",
+      "description": "生成占位符文本",
+      "longDescription": "以单词、句子或段落的形式生成占位符文本。",
+      "count": "数量",
+      "type": "类型",
+      "paragraphs": "段落",
+      "sentences": "句子",
+      "words": "单词",
+      "generatedText": "生成的文本",
+      "outputPlaceholder": "Lorem Ipsum 将显示在此处..."
+    },
+    "regex": {
+      "name": "正则生成器 (AI)",
+      "description": "从文本生成正则表达式",
+      "longDescription": "使用 AI 从自然语言描述生成正则表达式。",
+      "promptLabel": "描述您想要匹配的模式",
+      "promptPlaceholder": "例如：匹配一个有效的电子邮件地址",
+      "generatedRegex": "生成的正则表达式",
+      "outputPlaceholder": "正则表达式将显示在此处...",
+      "testStringLabel": "测试字符串",
+      "testStringPlaceholder": "输入要针对正则表达式进行测试的字符串，每行一个。",
+      "testButton": "测试",
+      "testResults": "测试结果",
+      "match": "匹配",
+      "noMatch": "不匹配",
+      "generating": "生成中...",
+      "errorAPI": "生成正则表达式失败。请重试。",
+      "errorInvalidRegex": "该模式不是一个有效的正则表达式。",
+      "errorNoRegex": "测试前请输入或生成一个正则表达式模式。"
+    }
+  }
+}

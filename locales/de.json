@@ -1,0 +1,171 @@
+{
+  "sidebar": {
+    "title": "Entwickler-Toolkit",
+    "searchPlaceholder": "Werkzeuge suchen..."
+  },
+  "header": {
+    "toggleTheme": "Thema wechseln"
+  },
+  "common": {
+    "reset": "Zurücksetzen",
+    "generate": "Generieren",
+    "convert": "Umwandeln",
+    "copyToClipboard": "In die Zwischenablage kopieren",
+    "input": "Eingabe",
+    "output": "Ausgabe",
+    "error": "Fehler"
+  },
+  "tool": {
+    "base64": {
+      "name": "Base64",
+      "description": "Base64-Daten kodieren/dekodieren",
+      "longDescription": "Kodieren Sie Text oder Dateien in das Base64-Format oder dekodieren Sie sie zurück.",
+      "encode": "Kodieren",
+      "decode": "Dekodieren",
+      "inputPlaceholderEncode": "Text zum Kodieren eingeben...",
+      "inputPlaceholderDecode": "Base64 zum Dekodieren eingeben...",
+      "outputPlaceholder": "Ergebnis wird hier angezeigt...",
+      "uploadEncode": "Datei zum Kodieren hochladen",
+      "uploadDecode": "Datei zum Dekodieren hochladen",
+      "downloadResult": "Ergebnis herunterladen",
+      "errorInvalidInput": "Ungültige Eingabe für die ausgewählte Operation. Stellen Sie sicher, dass der Text für die Dekodierung gültig ist.",
+      "errorReadFile": "Fehler beim Lesen der Datei.",
+      "errorDownload": "Datei zum Herunterladen konnte nicht erstellt werden."
+    },
+    "jsonyaml": {
+      "name": "JSON/YAML/Props",
+      "description": "Zwischen JSON, YAML & Properties konvertieren",
+      "longDescription": "Konvertieren Sie Daten zwischen den Formaten JSON, YAML und Java .properties.",
+      "inputLabel": "Eingabe ({from})",
+      "outputLabel": "Ausgabe ({to})",
+      "inputPlaceholder": "{from} hier eingeben...",
+      "conversionMode": "Konvertierungsmodus",
+      "errorConversionFailed": "Konvertierung fehlgeschlagen: {message}"
+    },
+    "url": {
+      "name": "URL-Kodierer",
+      "description": "URL-Komponenten kodieren/dekodieren",
+      "longDescription": "Kodieren oder dekodieren Sie Zeichenfolgen für die Verwendung in URLs.",
+      "encode": "Kodieren",
+      "decode": "Dekodieren",
+      "inputPlaceholder": "URL oder Text eingeben...",
+      "outputPlaceholder": "Ergebnis wird hier angezeigt...",
+      "errorInvalidInput": "Ungültige Eingabe für die Dekodierung."
+    },
+    "hash": {
+      "name": "Hash-Generator",
+      "description": "MD5-, SHA-Hashes generieren",
+      "longDescription": "Generieren Sie Hash-Werte für Text oder Dateien mit verschiedenen Algorithmen.",
+      "algorithm": "Algorithmus",
+      "hashFile": "Datei hashen",
+      "textInput": "Texteingabe",
+      "inputPlaceholder": "Text zum Hashen eingeben...",
+      "generatedHash": "Generierter Hash",
+      "outputPlaceholder": "Ergebnis wird hier angezeigt...",
+      "errorReadFile": "Fehler beim Lesen der Datei."
+    },
+    "uuid": {
+      "name": "UUID-Generator",
+      "description": "UUIDs generieren",
+      "longDescription": "Generieren Sie universell eindeutige Bezeichner (UUIDs).",
+      "numberToGenerate": "Anzahl zu generieren",
+      "generatedUuids": "Generierte UUIDs:"
+    },
+    "diff": {
+      "name": "Textvergleich",
+      "description": "Zwei Textblöcke vergleichen",
+      "longDescription": "Vergleichen Sie zwei Textblöcke und heben Sie die Unterschiede hervor.",
+      "originalText": "Originaltext",
+      "modifiedText": "Geänderter Text",
+      "differences": "Unterschiede",
+      "inline": "Inline",
+      "sideBySide": "Nebeneinander",
+      "loadingLibrary": "Vergleichsbibliothek wird geladen..."
+    },
+    "merge": {
+      "name": "Merge-Werkzeug",
+      "description": "2-Wege-Text-Merge",
+      "longDescription": "Kombinieren Sie zwei Textversionen und heben Sie die Unterschiede hervor.",
+      "howToTitle": "Anwendung des 2-Wege-Merge-Werkzeugs",
+      "versionA": "Version A",
+      "versionB": "Version B",
+      "merge": "Zusammenführen",
+      "loadingLibrary": "Bibliothek wird geladen...",
+      "mergedResult": "Zusammengeführtes Ergebnis",
+      "outputPlaceholder": "Ergebnis wird hier angezeigt...",
+      "errorMerge": "Während des Zusammenführens ist ein Fehler aufgetreten: {message}",
+      "errorLibLoad": "Fehler: Die Vergleichsbibliothek (jsdiff) wurde noch nicht geladen. Bitte warten Sie einen Moment.",
+      "instructions": {
+        "1": "<strong>Version A:</strong> Fügen Sie hier die erste Textversion ein.",
+        "2": "<strong>Version B:</strong> Fügen Sie hier die zweite Textversion ein.",
+        "3": "Klicken Sie auf die Schaltfläche \"Zusammenführen\", um die Texte zu kombinieren.",
+        "4": "Zeilen, die nur in Version A vorkommen, werden mit <code>-</code> versehen.",
+        "5": "Zeilen, die nur in Version B vorkommen, werden mit <code>+</code> versehen.",
+        "6": "Gemeinsame Zeilen werden mit <code>  </code> (zwei Leerzeichen) versehen."
+      }
+    },
+    "cron": {
+      "name": "Cron-Generator",
+      "description": "Cron-Ausdrücke erstellen",
+      "longDescription": "Erstellen Sie Cron-Ausdrücke mit einer benutzerfreundlichen Oberfläche und sehen Sie eine Live-Erklärung.",
+      "minute": "Minute",
+      "hour": "Stunde",
+      "dayOfMonth": "Tag (Monat)",
+      "month": "Monat",
+      "dayOfWeek": "Tag (Woche)",
+      "result": "Ergebnis",
+      "explanation": "Erklärung",
+      "errorInvalid": "Ungültiger Cron-Ausdruck: {message}"
+    },
+    "timestamp": {
+      "name": "Zeitstempel",
+      "description": "Zeitstempel umwandeln",
+      "longDescription": "Konvertieren Sie zwischen Unix-Zeitstempeln und für Menschen lesbaren Daten.",
+      "inputLabel": "Eingabe (Unix, ISO, etc.)",
+      "inputPlaceholder": "Zeitstempel oder Datum eingeben...",
+      "useCurrentTime": "Aktuelle Zeit verwenden",
+      "unixTimestamp": "Unix-Zeitstempel (Sekunden)",
+      "utc": "UTC",
+      "localTime": "Ihre lokale Zeit",
+      "relativeTime": "Relative Zeit",
+      "errorInvalid": "Ungültiges Datums- oder Zeitstempelformat."
+    },
+    "color": {
+      "name": "Farbwähler",
+      "description": "Farben auswählen und umwandeln",
+      "longDescription": "Wählen Sie eine Farbe und erhalten Sie ihre Werte in verschiedenen Formaten.",
+      "colorPicker": "Farbwähler"
+    },
+    "lorem": {
+      "name": "Lorem Ipsum",
+      "description": "Platzhaltertext generieren",
+      "longDescription": "Generieren Sie Platzhaltertext in Wörtern, Sätzen oder Absätzen.",
+      "count": "Anzahl",
+      "type": "Typ",
+      "paragraphs": "Absätze",
+      "sentences": "Sätze",
+      "words": "Wörter",
+      "generatedText": "Generierter Text",
+      "outputPlaceholder": "Lorem Ipsum wird hier angezeigt..."
+    },
+    "regex": {
+      "name": "Regex-Gen (KI)",
+      "description": "Regex aus Text generieren",
+      "longDescription": "Verwenden Sie KI, um reguläre Ausdrücke aus natürlichsprachlichen Beschreibungen zu generieren.",
+      "promptLabel": "Beschreiben Sie das Muster, das Sie abgleichen möchten",
+      "promptPlaceholder": "z.B. eine gültige E-Mail-Adresse abgleichen",
+      "generatedRegex": "Generierte Regex",
+      "outputPlaceholder": "Regex wird hier angezeigt...",
+      "testStringLabel": "Testzeichenfolge",
+      "testStringPlaceholder": "Geben Sie Zeichenfolgen ein, um sie gegen die Regex zu testen, eine pro Zeile.",
+      "testButton": "Testen",
+      "testResults": "Testergebnisse",
+      "match": "PASST",
+      "noMatch": "PASST NICHT",
+      "generating": "Generiere...",
+      "errorAPI": "Fehler beim Generieren der Regex. Bitte versuchen Sie es erneut.",
+      "errorInvalidRegex": "Das Muster ist kein gültiger regulärer Ausdruck.",
+      "errorNoRegex": "Bitte generieren oder geben Sie vor dem Testen ein Regex-Muster ein."
+    }
+  }
+}

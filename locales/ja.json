@@ -1,0 +1,171 @@
+{
+  "sidebar": {
+    "title": "開発者ツールキット",
+    "searchPlaceholder": "ツールを検索..."
+  },
+  "header": {
+    "toggleTheme": "テーマを切り替え"
+  },
+  "common": {
+    "reset": "リセット",
+    "generate": "生成",
+    "convert": "変換",
+    "copyToClipboard": "クリップボードにコピー",
+    "input": "入力",
+    "output": "出力",
+    "error": "エラー"
+  },
+  "tool": {
+    "base64": {
+      "name": "Base64",
+      "description": "Base64データのエンコード/デコード",
+      "longDescription": "テキストまたはファイルをBase64形式にエンコードしたり、元に戻したりします。",
+      "encode": "エンコード",
+      "decode": "デコード",
+      "inputPlaceholderEncode": "エンコードするテキストを入力...",
+      "inputPlaceholderDecode": "デコードするBase64を入力...",
+      "outputPlaceholder": "結果はここに表示されます...",
+      "uploadEncode": "エンコードするファイルをアップロード",
+      "uploadDecode": "デコードするファイルをアップロード",
+      "downloadResult": "結果をダウンロード",
+      "errorInvalidInput": "選択した操作の入力が無効です。デコードのためにテキストが有効であることを確認してください。",
+      "errorReadFile": "ファイルの読み込み中にエラーが発生しました。",
+      "errorDownload": "ダウンロード用のファイルを作成できませんでした。"
+    },
+    "jsonyaml": {
+      "name": "JSON/YAML/Props",
+      "description": "JSON, YAML, Properties間で変換",
+      "longDescription": "JSON、YAML、およびJavaの.properties形式の間でデータを変換します。",
+      "inputLabel": "入力 ({from})",
+      "outputLabel": "出力 ({to})",
+      "inputPlaceholder": "{from}をここに入力...",
+      "conversionMode": "変換モード",
+      "errorConversionFailed": "変換に失敗しました: {message}"
+    },
+    "url": {
+      "name": "URLエンコーダー",
+      "description": "URLコンポーネントのエンコード/デコード",
+      "longDescription": "URLで使用するための文字列をエンコードまたはデコードします。",
+      "encode": "エンコード",
+      "decode": "デコード",
+      "inputPlaceholder": "URLまたはテキストを入力...",
+      "outputPlaceholder": "結果はここに表示されます...",
+      "errorInvalidInput": "デコードのための無効な入力です。"
+    },
+    "hash": {
+      "name": "ハッシュ生成",
+      "description": "MD5, SHAハッシュを生成",
+      "longDescription": "さまざまなアルゴリズムを使用して、テキストまたはファイルのハッシュ値を生成します。",
+      "algorithm": "アルゴリズム",
+      "hashFile": "ファイルのハッシュ",
+      "textInput": "テキスト入力",
+      "inputPlaceholder": "ハッシュするテキストを入力...",
+      "generatedHash": "生成されたハッシュ",
+      "outputPlaceholder": "結果はここに表示されます...",
+      "errorReadFile": "ファイルの読み込み中にエラーが発生しました。"
+    },
+    "uuid": {
+      "name": "UUID生成",
+      "description": "UUIDを生成",
+      "longDescription": "汎用一意識別子（UUID）を生成します。",
+      "numberToGenerate": "生成する数",
+      "generatedUuids": "生成されたUUID:"
+    },
+    "diff": {
+      "name": "テキスト比較",
+      "description": "2つのテキストブロックを比較",
+      "longDescription": "2つのテキストブロックを比較し、違いを強調表示します。",
+      "originalText": "元のテキスト",
+      "modifiedText": "変更後のテキスト",
+      "differences": "相違点",
+      "inline": "インライン",
+      "sideBySide": "並べて表示",
+      "loadingLibrary": "比較ライブラリを読み込み中..."
+    },
+    "merge": {
+      "name": "マージツール",
+      "description": "2-wayテキストマージ",
+      "longDescription": "2つのテキストバージョンを結合し、違いを強調表示します。",
+      "howToTitle": "2-Wayマージツールの使い方",
+      "versionA": "バージョンA",
+      "versionB": "バージョンB",
+      "merge": "マージ",
+      "loadingLibrary": "ライブラリを読み込み中...",
+      "mergedResult": "マージ結果",
+      "outputPlaceholder": "結果はここに表示されます...",
+      "errorMerge": "マージ中にエラーが発生しました: {message}",
+      "errorLibLoad": "エラー：比較ライブラリ（jsdiff）がまだ読み込まれていません。しばらくお待ちください。",
+      "instructions": {
+        "1": "<strong>バージョンA:</strong> 最初のテキストバージョンをここに貼り付けます。",
+        "2": "<strong>バージョンB:</strong> 2番目のテキストバージョンをここに貼り付けます。",
+        "3": "「マージ」ボタンをクリックしてテキストを結合します。",
+        "4": "バージョンAに固有の行には<code>-</code>が付きます。",
+        "5": "バージョンBに固有の行には<code>+</code>が付きます。",
+        "6": "共通の行には<code>  </code>（2つのスペース）が付きます。"
+      }
+    },
+    "cron": {
+      "name": "Cron生成",
+      "description": "cron式を作成",
+      "longDescription": "使いやすいインターフェースでcron式を作成し、リアルタイムで説明を表示します。",
+      "minute": "分",
+      "hour": "時",
+      "dayOfMonth": "日(月)",
+      "month": "月",
+      "dayOfWeek": "曜日(週)",
+      "result": "結果",
+      "explanation": "説明",
+      "errorInvalid": "無効なCron式です: {message}"
+    },
+    "timestamp": {
+      "name": "タイムスタンプ",
+      "description": "タイムスタンプを変換",
+      "longDescription": "Unixタイムスタンプと人間が読める日付の間で変換します。",
+      "inputLabel": "入力 (Unix, ISOなど)",
+      "inputPlaceholder": "タイムスタンプまたは日付を入力...",
+      "useCurrentTime": "現在時刻を使用",
+      "unixTimestamp": "Unixタイムスタンプ (秒)",
+      "utc": "UTC",
+      "localTime": "あなたのローカル時間",
+      "relativeTime": "相対時間",
+      "errorInvalid": "無効な日付またはタイムスタンプ形式です。"
+    },
+    "color": {
+      "name": "カラーピッカー",
+      "description": "色を選択して変換",
+      "longDescription": "色を選択し、さまざまな形式の値を取得します。",
+      "colorPicker": "カラーピッカー"
+    },
+    "lorem": {
+      "name": "Lorem Ipsum",
+      "description": "プレースホルダーテキストを生成",
+      "longDescription": "単語、文、または段落でプレースホルダーテキストを生成します。",
+      "count": "数",
+      "type": "タイプ",
+      "paragraphs": "段落",
+      "sentences": "文",
+      "words": "単語",
+      "generatedText": "生成されたテキスト",
+      "outputPlaceholder": "Lorem Ipsumはここに表示されます..."
+    },
+    "regex": {
+      "name": "正規表現生成 (AI)",
+      "description": "テキストから正規表現を生成",
+      "longDescription": "AIを使用して自然言語の記述から正規表現を生成します。",
+      "promptLabel": "一致させたいパターンを記述してください",
+      "promptPlaceholder": "例：有効なメールアドレスに一致",
+      "generatedRegex": "生成された正規表現",
+      "outputPlaceholder": "正規表現はここに表示されます...",
+      "testStringLabel": "テスト文字列",
+      "testStringPlaceholder": "正規表現に対してテストする文字列を1行に1つずつ入力してください。",
+      "testButton": "テスト",
+      "testResults": "テスト結果",
+      "match": "一致",
+      "noMatch": "不一致",
+      "generating": "生成中...",
+      "errorAPI": "正規表現の生成に失敗しました。もう一度お試しください。",
+      "errorInvalidRegex": "このパターンは有効な正規表現ではありません。",
+      "errorNoRegex": "テストする前に正規表現パターンを生成または入力してください。"
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "sidebar": {
+    "title": "Dev Toolkit",
+    "searchPlaceholder": "Search tools..."
+  },
+  "header": {
+    "toggleTheme": "Toggle theme"
+  },
+  "common": {
+    "reset": "Reset",
+    "generate": "Generate",
+    "convert": "Convert",
+    "copyToClipboard": "Copy to clipboard",
+    "input": "Input",
+    "output": "Output",
+    "error": "Error"
+  },
+  "tool": {
+    "base64": {
+      "name": "Base64",
+      "description": "Encode/decode Base64 data",
+      "longDescription": "Encode text or files into Base64 format, or decode them back.",
+      "encode": "Encode",
+      "decode": "Decode",
+      "inputPlaceholderEncode": "Enter text to encode...",
+      "inputPlaceholderDecode": "Enter Base64 to decode...",
+      "outputPlaceholder": "Result will appear here...",
+      "uploadEncode": "Upload File to Encode",
+      "uploadDecode": "Upload File to Decode",
+      "downloadResult": "Download Result",
+      "errorInvalidInput": "Invalid input for the selected operation. Ensure the text is valid for decoding.",
+      "errorReadFile": "Error reading file.",
+      "errorDownload": "Could not create file for download."
+    },
+    "jsonyaml": {
+      "name": "JSON/YAML/Props",
+      "description": "Convert between JSON, YAML, & Properties",
+      "longDescription": "Convert data between JSON, YAML, and Java .properties formats.",
+      "inputLabel": "Input ({from})",
+      "outputLabel": "Output ({to})",
+      "inputPlaceholder": "Enter {from} here...",
+      "conversionMode": "Conversion Mode",
+      "errorConversionFailed": "Conversion failed: {message}"
+    },
+    "url": {
+      "name": "URL Encoder",
+      "description": "Encode/decode URL components",
+      "longDescription": "Encode or decode strings for use in URLs.",
+      "encode": "Encode",
+      "decode": "Decode",
+      "inputPlaceholder": "Enter URL or text...",
+      "outputPlaceholder": "Result will appear here...",
+      "errorInvalidInput": "Invalid input for decoding."
+    },
+    "hash": {
+      "name": "Hash Gen",
+      "description": "Generate MD5, SHA hashes",
+      "longDescription": "Generate hash values for text or files using various algorithms.",
+      "algorithm": "Algorithm",
+      "hashFile": "Hash a File",
+      "textInput": "Text Input",
+      "inputPlaceholder": "Enter text to hash...",
+      "generatedHash": "Generated Hash",
+      "outputPlaceholder": "Result will appear here...",
+      "errorReadFile": "Error reading file."
+    },
+    "uuid": {
+      "name": "UUID Gen",
+      "description": "Generate UUIDs",
+      "longDescription": "Generate universally unique identifiers (UUIDs).",
+      "numberToGenerate": "Number to generate",
+      "generatedUuids": "Generated UUIDs:"
+    },
+    "diff": {
+      "name": "Text Diff",
+      "description": "Compare two text blocks",
+      "longDescription": "Compare two blocks of text and highlight the differences.",
+      "originalText": "Original Text",
+      "modifiedText": "Modified Text",
+      "differences": "Differences",
+      "inline": "Inline",
+      "sideBySide": "Side-by-side",
+      "loadingLibrary": "Loading diffing library..."
+    },
+    "merge": {
+      "name": "Merge Tool",
+      "description": "2-way text merge",
+      "longDescription": "Combine two text versions, highlighting differences.",
+      "howToTitle": "How to Use the 2-Way Merge Tool",
+      "versionA": "Version A",
+      "versionB": "Version B",
+      "merge": "Merge",
+      "loadingLibrary": "Loading Library...",
+      "mergedResult": "Merged Result",
+      "outputPlaceholder": "Result will appear here...",
+      "errorMerge": "An error occurred during merge: {message}",
+      "errorLibLoad": "Error: The diffing library (jsdiff) has not loaded yet. Please wait a moment.",
+      "instructions": {
+        "1": "<strong>Version A:</strong> Paste the first text version here.",
+        "2": "<strong>Version B:</strong> Paste the second text version here.",
+        "3": "Click the \"Merge\" button to combine the texts.",
+        "4": "Lines unique to Version A will be prefixed with <code>-</code>.",
+        "5": "Lines unique to Version B will be prefixed with <code>+</code>.",
+        "6": "Common lines will be prefixed with <code>  </code> (two spaces)."
+      }
+    },
+    "cron": {
+      "name": "Cron Gen",
+      "description": "Create cron expressions",
+      "longDescription": "Create cron expressions with a user-friendly interface and see a live explanation.",
+      "minute": "Minute",
+      "hour": "Hour",
+      "dayOfMonth": "Day (Month)",
+      "month": "Month",
+      "dayOfWeek": "Day (Week)",
+      "result": "Result",
+      "explanation": "Explanation",
+      "errorInvalid": "Invalid Cron Expression: {message}"
+    },
+    "timestamp": {
+      "name": "Timestamp",
+      "description": "Convert timestamps",
+      "longDescription": "Convert between Unix timestamps and human-readable dates.",
+      "inputLabel": "Input (Unix, ISO, etc.)",
+      "inputPlaceholder": "Enter timestamp or date...",
+      "useCurrentTime": "Use current time",
+      "unixTimestamp": "Unix Timestamp (seconds)",
+      "utc": "UTC",
+      "localTime": "Your Local Time",
+      "relativeTime": "Relative Time",
+      "errorInvalid": "Invalid date or timestamp format."
+    },
+    "color": {
+      "name": "Color Picker",
+      "description": "Pick and convert colors",
+      "longDescription": "Pick a color and get its values in different formats.",
+      "colorPicker": "Color Picker"
+    },
+    "lorem": {
+      "name": "Lorem Ipsum",
+      "description": "Generate placeholder text",
+      "longDescription": "Generate placeholder text in words, sentences, or paragraphs.",
+      "count": "Count",
+      "type": "Type",
+      "paragraphs": "Paragraphs",
+      "sentences": "Sentences",
+      "words": "Words",
+      "generatedText": "Generated Text",
+      "outputPlaceholder": "Lorem Ipsum will appear here..."
+    },
+    "regex": {
+      "name": "Regex Gen (AI)",
+      "description": "Generate regex from text",
+      "longDescription": "Use AI to generate regular expressions from natural language descriptions.",
+      "promptLabel": "Describe the pattern you want to match",
+      "promptPlaceholder": "e.g., match a valid email address",
+      "generatedRegex": "Generated Regex",
+      "outputPlaceholder": "Regex will appear here...",
+      "testStringLabel": "Test String",
+      "testStringPlaceholder": "Enter strings to test against the regex, one per line.",
+      "testButton": "Test",
+      "testResults": "Test Results",
+      "match": "MATCH",
+      "noMatch": "NO MATCH",
+      "generating": "Generating...",
+      "errorAPI": "Failed to generate regex. Please try again.",
+      "errorInvalidRegex": "The pattern is not a valid regular expression.",
+      "errorNoRegex": "Please generate or enter a regex pattern before testing."
+    }
+  }
+}

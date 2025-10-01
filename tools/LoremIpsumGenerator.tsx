@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { ToolContainer } from '../components/ToolContainer';
 import { CopyButton } from '../components/CopyButton';
+import { useTranslation } from '../i18n';
 
-// A simple lorem ipsum generator function
 const generateLoremIpsum = (count: number, type: 'paragraphs' | 'sentences' | 'words'): string => {
     const words = [
         'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'curabitur', 'vel', 'hendrerit',
@@ -54,27 +54,34 @@ const generateLoremIpsum = (count: number, type: 'paragraphs' | 'sentences' | 'w
     }
 };
 
+const defaultCount = 5;
+const defaultType = 'paragraphs';
 
 export const LoremIpsumGenerator: React.FC = () => {
-    const [count, setCount] = useState(5);
-    const [type, setType] = useState<'paragraphs' | 'sentences' | 'words'>('paragraphs');
+    const { t } = useTranslation();
+    const [count, setCount] = useState(defaultCount);
+    const [type, setType] = useState<'paragraphs' | 'sentences' | 'words'>(defaultType);
     const [output, setOutput] = useState('');
 
     const handleGenerate = useCallback(() => {
         setOutput(generateLoremIpsum(count, type));
     }, [count, type]);
 
-    // Generate on initial load
+    const handleReset = useCallback(() => {
+        setCount(defaultCount);
+        setType(defaultType);
+    }, []);
+
     React.useEffect(() => {
         handleGenerate();
     }, [handleGenerate]);
 
     return (
-        <ToolContainer title="Lorem Ipsum Generator" description="Generate placeholder text in words, sentences, or paragraphs.">
+        <ToolContainer title={t('tool.lorem.name')} description={t('tool.lorem.longDescription')}>
             <div className="space-y-4">
-                <div className="flex flex-wrap items-center gap-4">
+                <div className="flex flex-wrap items-end gap-4">
                     <div>
-                        <label htmlFor="li-count" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Count</label>
+                        <label htmlFor="li-count" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('tool.lorem.count')}</label>
                         <input
                             id="li-count"
                             type="number"
@@ -85,33 +92,39 @@ export const LoremIpsumGenerator: React.FC = () => {
                         />
                     </div>
                     <div>
-                         <label htmlFor="li-type" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Type</label>
+                         <label htmlFor="li-type" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('tool.lorem.type')}</label>
                          <select
                             id="li-type"
                             value={type}
                             onChange={(e) => setType(e.target.value as any)}
                              className="w-full sm:w-auto p-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 dark:border-gray-600 text-gray-900 dark:text-white"
                         >
-                            <option value="paragraphs">Paragraphs</option>
-                            <option value="sentences">Sentences</option>
-                            <option value="words">Words</option>
+                            <option value="paragraphs">{t('tool.lorem.paragraphs')}</option>
+                            <option value="sentences">{t('tool.lorem.sentences')}</option>
+                            <option value="words">{t('tool.lorem.words')}</option>
                         </select>
                     </div>
                      <button
                         onClick={handleGenerate}
-                        className="self-end px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                        className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                     >
-                        Generate
+                        {t('common.generate')}
+                    </button>
+                    <button
+                        onClick={handleReset}
+                        className="px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600"
+                    >
+                        {t('common.reset')}
                     </button>
                 </div>
 
                  <div className="relative">
-                    <label htmlFor="li-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Generated Text</label>
+                    <label htmlFor="li-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('tool.lorem.generatedText')}</label>
                     <textarea
                         id="li-output"
                         value={output}
                         readOnly
-                        placeholder="Lorem Ipsum will appear here..."
+                        placeholder={t('tool.lorem.outputPlaceholder')}
                         className="w-full h-72 p-2 border border-gray-300 rounded-md shadow-sm bg-white dark:bg-white dark:text-gray-900 dark:border-gray-600"
                         spellCheck="false"
                     />

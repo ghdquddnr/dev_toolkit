@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { useCopyToClipboard } from '../hooks/useCopyToClipboard';
+import { useTranslation } from '../i18n';
 
 interface CopyButtonProps {
     textToCopy: string;
@@ -20,12 +20,13 @@ const ClipboardIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 
 export const CopyButton: React.FC<CopyButtonProps> = ({ textToCopy }) => {
     const [isCopied, copy] = useCopyToClipboard();
+    const { t } = useTranslation();
 
     return (
         <button
             onClick={() => copy(textToCopy)}
             className="absolute top-2 right-2 p-2 bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
-            title="Copy to clipboard"
+            title={t('common.copyToClipboard')}
         >
             {isCopied ? (
                 <CheckIcon className="w-5 h-5 text-green-500" />

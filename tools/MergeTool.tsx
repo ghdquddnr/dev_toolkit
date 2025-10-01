@@ -1,14 +1,16 @@
 import React, { useState, useCallback } from 'react';
 import { ToolContainer } from '../components/ToolContainer';
 import { CopyButton } from '../components/CopyButton';
+import { useTranslation } from '../i18n';
 
-declare const Diff: any; // Using jsdiff's global Diff object
+declare const Diff: any;
 
 interface MergeToolProps {
     isLibLoaded: boolean;
 }
 
 export const MergeTool: React.FC<MergeToolProps> = ({ isLibLoaded }) => {
+    const { t } = useTranslation();
     const [versionA, setVersionA] = useState(`Line 1 from A\nLine 2 from A`);
     const [versionB, setVersionB] = useState(`Line 1 from B\nLine 2 from B`);
     const [merged, setMerged] = useState('');
@@ -17,7 +19,7 @@ export const MergeTool: React.FC<MergeToolProps> = ({ isLibLoaded }) => {
     const performMerge = useCallback(() => {
         setError('');
         if (!isLibLoaded || typeof Diff === 'undefined') {
-            setError('Error: The diffing library (jsdiff) has not loaded yet. Please wait a moment.');
+            setError(t('tool.merge.errorLibLoad'));
             return;
         }
 
@@ -26,7 +28,6 @@ export const MergeTool: React.FC<MergeToolProps> = ({ isLibLoaded }) => {
             let mergedText = '';
 
             diffResult.forEach((part: any) => {
-                // Ensure value ends with a newline if it doesn't already, for consistent processing
                 const value = part.value.endsWith('\n') ? part.value : part.value + '\n';
                 const lines = value.slice(0, -1).split('\n');
 
@@ -41,33 +42,39 @@ export const MergeTool: React.FC<MergeToolProps> = ({ isLibLoaded }) => {
             
             setMerged(mergedText.trimEnd());
         } catch (e: any) {
-            setError(`An error occurred during merge: ${e.message}`);
+            setError(t('tool.merge.errorMerge', { message: e.message }));
         }
 
-    }, [versionA, versionB, isLibLoaded]);
+    }, [versionA, versionB, isLibLoaded, t]);
+
+    const handleReset = useCallback(() => {
+        setVersionA('');
+        setVersionB('');
+        setMerged('');
+        setError('');
+    }, []);
+
+    const instructions = [1, 2, 3, 4, 5, 6].map(i => t(`tool.merge.instructions.${i}`));
 
     return (
-        <ToolContainer title="2-Way Merge Tool" description="Combine two text versions, highlighting differences.">
+        <ToolContainer title={t('tool.merge.name')} description={t('tool.merge.longDescription')}>
             <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-md text-blue-800 dark:text-blue-200">
                 <h3 className="font-semibold text-lg mb-2 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                     </svg>
-                    How to Use the 2-Way Merge Tool
+                    {t('tool.merge.howToTitle')}
                 </h3>
                 <ul className="list-disc list-inside space-y-1">
-                    <li><strong>Version A:</strong> Paste the first text version here.</li>
-                    <li><strong>Version B:</strong> Paste the second text version here.</li>
-                    <li>Click the "Merge" button to combine the texts.</li>
-                    <li>Lines unique to Version A will be prefixed with <code className="font-mono bg-gray-200 dark:bg-gray-700 px-1 rounded">-</code>.</li>
-                    <li>Lines unique to Version B will be prefixed with <code className="font-mono bg-gray-200 dark:bg-gray-700 px-1 rounded">+</code>.</li>
-                    <li>Common lines will be prefixed with <code className="font-mono bg-gray-200 dark:bg-gray-700 px-1 rounded">  </code> (two spaces).</li>
+                    {instructions.map((item, index) => (
+                        <li key={index} dangerouslySetInnerHTML={{ __html: item }}></li>
+                    ))}
                 </ul>
             </div>
             <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Changed from 3 to 2 columns */} 
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label htmlFor="version-a" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Version A</label>
+                        <label htmlFor="version-a" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('tool.merge.versionA')}</label>
                         <textarea
                             id="version-a"
                             value={versionA}
@@ -76,7 +83,7 @@ export const MergeTool: React.FC<MergeToolProps> = ({ isLibLoaded }) => {
                         />
                     </div>
                     <div>
-                        <label htmlFor="version-b" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Version B</label>
+                        <label htmlFor="version-b" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('tool.merge.versionB')}</label>
                         <textarea
                             id="version-b"
                             value={versionB}
@@ -86,13 +93,19 @@ export const MergeTool: React.FC<MergeToolProps> = ({ isLibLoaded }) => {
                     </div>
                 </div>
 
-                <div className="flex items-center">
+                <div className="flex items-center gap-4">
                     <button
                         onClick={performMerge}
                         disabled={!isLibLoaded}
                         className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed"
                     >
-                        {isLibLoaded ? 'Merge' : 'Loading Library...'}
+                        {isLibLoaded ? t('tool.merge.merge') : t('tool.merge.loadingLibrary')}
+                    </button>
+                    <button
+                        onClick={handleReset}
+                        className="px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600"
+                    >
+                        {t('common.reset')}
                     </button>
                 </div>
 
@@ -100,12 +113,12 @@ export const MergeTool: React.FC<MergeToolProps> = ({ isLibLoaded }) => {
                 
                 {merged && (
                     <div className="relative">
-                        <label htmlFor="merged-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Merged Result</label>
+                        <label htmlFor="merged-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('tool.merge.mergedResult')}</label>
                         <textarea
                             id="merged-output"
                             value={merged}
                             readOnly
-                            placeholder="Result will appear here..."
+                            placeholder={t('tool.merge.outputPlaceholder')}
                             className="w-full h-64 p-2 border border-gray-300 rounded-md shadow-sm bg-white dark:bg-white dark:text-gray-900 dark:border-gray-600 font-mono"
                         />
                         <CopyButton textToCopy={merged} />

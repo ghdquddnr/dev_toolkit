@@ -1,0 +1,171 @@
+{
+  "sidebar": {
+    "title": "개발자 툴킷",
+    "searchPlaceholder": "도구 검색..."
+  },
+  "header": {
+    "toggleTheme": "테마 전환"
+  },
+  "common": {
+    "reset": "초기화",
+    "generate": "생성",
+    "convert": "변환",
+    "copyToClipboard": "클립보드에 복사",
+    "input": "입력",
+    "output": "출력",
+    "error": "오류"
+  },
+  "tool": {
+    "base64": {
+      "name": "Base64",
+      "description": "Base64 데이터 인코딩/디코딩",
+      "longDescription": "텍스트나 파일을 Base64 형식으로 인코딩하거나 다시 디코딩합니다.",
+      "encode": "인코딩",
+      "decode": "디코딩",
+      "inputPlaceholderEncode": "인코딩할 텍스트를 입력하세요...",
+      "inputPlaceholderDecode": "디코딩할 Base64를 입력하세요...",
+      "outputPlaceholder": "결과가 여기에 표시됩니다...",
+      "uploadEncode": "인코딩할 파일 업로드",
+      "uploadDecode": "디코딩할 파일 업로드",
+      "downloadResult": "결과 다운로드",
+      "errorInvalidInput": "선택한 작업에 대한 입력이 잘못되었습니다. 디코딩을 위해 텍스트가 유효한지 확인하세요.",
+      "errorReadFile": "파일을 읽는 중 오류가 발생했습니다.",
+      "errorDownload": "다운로드할 파일을 생성할 수 없습니다."
+    },
+    "jsonyaml": {
+      "name": "JSON/YAML/속성",
+      "description": "JSON, YAML, 속성 간 변환",
+      "longDescription": "JSON, YAML 및 Java .properties 형식 간에 데이터를 변환합니다.",
+      "inputLabel": "입력 ({from})",
+      "outputLabel": "출력 ({to})",
+      "inputPlaceholder": "{from}을(를) 여기에 입력하세요...",
+      "conversionMode": "변환 모드",
+      "errorConversionFailed": "변환 실패: {message}"
+    },
+    "url": {
+      "name": "URL 인코더",
+      "description": "URL 구성 요소 인코딩/디코딩",
+      "longDescription": "URL에 사용할 문자열을 인코딩하거나 디코딩합니다.",
+      "encode": "인코딩",
+      "decode": "디코딩",
+      "inputPlaceholder": "URL 또는 텍스트를 입력하세요...",
+      "outputPlaceholder": "결과가 여기에 표시됩니다...",
+      "errorInvalidInput": "디코딩을 위한 입력이 잘못되었습니다."
+    },
+    "hash": {
+      "name": "해시 생성기",
+      "description": "MD5, SHA 해시 생성",
+      "longDescription": "다양한 알고리즘을 사용하여 텍스트나 파일의 해시 값을 생성합니다.",
+      "algorithm": "알고리즘",
+      "hashFile": "파일 해시",
+      "textInput": "텍스트 입력",
+      "inputPlaceholder": "해시할 텍스트를 입력하세요...",
+      "generatedHash": "생성된 해시",
+      "outputPlaceholder": "결과가 여기에 표시됩니다...",
+      "errorReadFile": "파일을 읽는 중 오류가 발생했습니다."
+    },
+    "uuid": {
+      "name": "UUID 생성기",
+      "description": "UUID 생성",
+      "longDescription": "범용 고유 식별자(UUID)를 생성합니다.",
+      "numberToGenerate": "생성할 개수",
+      "generatedUuids": "생성된 UUID:"
+    },
+    "diff": {
+      "name": "텍스트 비교",
+      "description": "두 텍스트 블록 비교",
+      "longDescription": "두 텍스트 블록을 비교하고 차이점을 강조 표시합니다.",
+      "originalText": "원본 텍스트",
+      "modifiedText": "수정된 텍스트",
+      "differences": "차이점",
+      "inline": "인라인",
+      "sideBySide": "나란히 보기",
+      "loadingLibrary": "비교 라이브러리 로드 중..."
+    },
+    "merge": {
+      "name": "병합 도구",
+      "description": "2-way 텍스트 병합",
+      "longDescription": "두 텍스트 버전을 결합하고 차이점을 강조 표시합니다.",
+      "howToTitle": "2-Way 병합 도구 사용 방법",
+      "versionA": "버전 A",
+      "versionB": "버전 B",
+      "merge": "병합",
+      "loadingLibrary": "라이브러리 로드 중...",
+      "mergedResult": "병합 결과",
+      "outputPlaceholder": "결과가 여기에 표시됩니다...",
+      "errorMerge": "병합 중 오류 발생: {message}",
+      "errorLibLoad": "오류: 비교 라이브러리(jsdiff)가 아직 로드되지 않았습니다. 잠시만 기다려주세요.",
+      "instructions": {
+        "1": "<strong>버전 A:</strong> 첫 번째 텍스트 버전을 여기에 붙여넣으세요.",
+        "2": "<strong>버전 B:</strong> 두 번째 텍스트 버전을 여기에 붙여넣으세요.",
+        "3": "\"병합\" 버튼을 클릭하여 텍스트를 결합하세요.",
+        "4": "버전 A에만 있는 줄은 <code>-</code> 접두사가 붙습니다.",
+        "5": "버전 B에만 있는 줄은 <code>+</code> 접두사가 붙습니다.",
+        "6": "공통된 줄은 <code>  </code>(공백 2개) 접두사가 붙습니다."
+      }
+    },
+    "cron": {
+      "name": "Cron 생성기",
+      "description": "Cron 표현식 생성",
+      "longDescription": "사용자 친화적인 인터페이스로 cron 표현식을 만들고 실시간 설명을 확인합니다.",
+      "minute": "분",
+      "hour": "시",
+      "dayOfMonth": "일(월)",
+      "month": "월",
+      "dayOfWeek": "요일(주)",
+      "result": "결과",
+      "explanation": "설명",
+      "errorInvalid": "잘못된 Cron 표현식: {message}"
+    },
+    "timestamp": {
+      "name": "타임스탬프",
+      "description": "타임스탬프 변환",
+      "longDescription": "Unix 타임스탬프와 사람이 읽을 수 있는 날짜 간에 변환합니다.",
+      "inputLabel": "입력 (Unix, ISO 등)",
+      "inputPlaceholder": "타임스탬프 또는 날짜를 입력하세요...",
+      "useCurrentTime": "현재 시간 사용",
+      "unixTimestamp": "Unix 타임스탬프 (초)",
+      "utc": "UTC",
+      "localTime": "사용자 현지 시간",
+      "relativeTime": "상대 시간",
+      "errorInvalid": "잘못된 날짜 또는 타임스탬프 형식입니다."
+    },
+    "color": {
+      "name": "색상 선택기",
+      "description": "색상 선택 및 변환",
+      "longDescription": "색상을 선택하고 다른 형식의 값으로 변환합니다.",
+      "colorPicker": "색상 선택기"
+    },
+    "lorem": {
+      "name": "로렘 입숨",
+      "description": "자리 표시자 텍스트 생성",
+      "longDescription": "단어, 문장 또는 단락 단위로 자리 표시자 텍스트를 생성합니다.",
+      "count": "개수",
+      "type": "유형",
+      "paragraphs": "단락",
+      "sentences": "문장",
+      "words": "단어",
+      "generatedText": "생성된 텍스트",
+      "outputPlaceholder": "로렘 입숨이 여기에 표시됩니다..."
+    },
+    "regex": {
+      "name": "정규식 생성기 (AI)",
+      "description": "텍스트로 정규식 생성",
+      "longDescription": "AI를 사용하여 자연어 설명으로부터 정규 표현식을 생성합니다.",
+      "promptLabel": "일치시키고 싶은 패턴을 설명하세요",
+      "promptPlaceholder": "예: 유효한 이메일 주소와 일치",
+      "generatedRegex": "생성된 정규식",
+      "outputPlaceholder": "정규식이 여기에 표시됩니다...",
+      "testStringLabel": "테스트 문자열",
+      "testStringPlaceholder": "정규식에 대해 테스트할 문자열을 한 줄에 하나씩 입력하세요.",
+      "testButton": "테스트",
+      "testResults": "테스트 결과",
+      "match": "일치",
+      "noMatch": "불일치",
+      "generating": "생성 중...",
+      "errorAPI": "정규식 생성에 실패했습니다. 다시 시도해 주세요.",
+      "errorInvalidRegex": "패턴이 유효한 정규 표현식이 아닙니다.",
+      "errorNoRegex": "테스트하기 전에 정규식 패턴을 생성하거나 입력하세요."
+    }
+  }
+}

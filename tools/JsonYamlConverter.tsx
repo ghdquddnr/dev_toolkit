@@ -1,54 +1,37 @@
 import React, { useState, useCallback } from 'react';
 import { ToolContainer } from '../components/ToolContainer';
 import { CopyButton } from '../components/CopyButton';
+import { useTranslation } from '../i18n';
 
 declare const jsyaml: any;
 
-/**
- * Flattens a nested object into a single-level object with dot-separated keys.
- * Handles arrays by using bracket notation, e.g., 'parent.array[0]'.
- * @param obj The object to flatten.
- * @param path The current path prefix.
- * @returns A flattened object.
- */
 const flattenObject = (obj: any, path: string = ''): Record<string, any> => {
   let result: Record<string, any> = {};
-
   if (typeof obj !== 'object' || obj === null) {
     if (path) result[path] = obj;
     return result;
   }
-
   for (const key of Object.keys(obj)) {
     const newPath = path ? (Array.isArray(obj) ? `${path}[${key}]` : `${path}.${key}`) : key;
     const value = obj[key];
-    
     if (typeof value === 'object' && value !== null) {
       result = { ...result, ...flattenObject(value, newPath) };
     } else {
       result[newPath] = value;
     }
   }
-
   return result;
 };
 
-/**
- * Unflattens an object with dot/bracket-separated keys into a nested object.
- * @param data The flat object to unflatten.
- * @returns A nested object.
- */
 const unflattenObject = (data: { [key: string]: string }): any => {
     const result = {};
     for (const path in data) {
         if (Object.prototype.hasOwnProperty.call(data, path)) {
-            // Regex to split path into keys, handling both dot and bracket notations
             const keys = path.match(/([^[.\]]+)/g) || [];
             let current: any = result;
             for (let i = 0; i < keys.length; i++) {
                 const key = keys[i];
                 const isLast = i === keys.length - 1;
-
                 if (isLast) {
                     current[key] = data[path];
                 } else {
@@ -65,7 +48,6 @@ const unflattenObject = (data: { [key: string]: string }): any => {
     return result;
 };
 
-
 type ConversionMode = 'json-to-yaml' | 'yaml-to-json' | 'yaml-to-props' | 'props-to-yaml';
 
 const modeInfo = {
@@ -76,6 +58,7 @@ const modeInfo = {
 };
 
 export const JsonYamlConverter: React.FC = () => {
+    const { t } = useTranslation();
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [mode, setMode] = useState<ConversionMode>('json-to-yaml');
@@ -127,17 +110,23 @@ export const JsonYamlConverter: React.FC = () => {
                 }
             }
         } catch (e: any) {
-            setError(`Conversion failed: ${e.message}`);
+            setError(t('tool.jsonyaml.errorConversionFailed', { message: e.message }));
         }
-    }, [input, mode]);
+    }, [input, mode, t]);
+
+    const handleReset = useCallback(() => {
+        setInput('');
+        setOutput('');
+        setError('');
+    }, []);
 
     const { from, to } = modeInfo[mode];
 
     return (
-        <ToolContainer title="JSON/YAML/Properties Converter" description="Convert data between JSON, YAML, and Java .properties formats.">
+        <ToolContainer title={t('tool.jsonyaml.name')} description={t('tool.jsonyaml.longDescription')}>
             <div className="space-y-4">
                 <div className="flex flex-col items-center gap-4">
-                     <label htmlFor="conversion-mode" className="sr-only">Conversion Mode</label>
+                     <label htmlFor="conversion-mode" className="sr-only">{t('tool.jsonyaml.conversionMode')}</label>
                      <select
                         id="conversion-mode"
                         value={mode}
@@ -154,26 +143,26 @@ export const JsonYamlConverter: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="relative">
                         <label htmlFor="converter-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                            Input ({from})
+                            {t('tool.jsonyaml.inputLabel', { from })}
                         </label>
                         <textarea
                             id="converter-input"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
-                            placeholder={`Enter ${from} here...`}
+                            placeholder={t('tool.jsonyaml.inputPlaceholder', { from })}
                             className="w-full h-72 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-white dark:text-gray-900 dark:border-gray-600 font-mono"
                             spellCheck="false"
                         />
                     </div>
                      <div className="relative">
                         <label htmlFor="converter-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                           Output ({to})
+                           {t('tool.jsonyaml.outputLabel', { to })}
                         </label>
                         <textarea
                             id="converter-output"
                             value={output}
                             readOnly
-                            placeholder="Result will appear here..."
+                            placeholder={t('tool.base64.outputPlaceholder')}
                             className="w-full h-72 p-2 border border-gray-300 rounded-md shadow-sm bg-white dark:bg-white dark:text-gray-900 dark:border-gray-600 font-mono"
                             spellCheck="false"
                         />
@@ -183,12 +172,18 @@ export const JsonYamlConverter: React.FC = () => {
 
                 {error && <p className="text-red-500 text-sm">{error}</p>}
                 
-                <div className="flex items-center">
+                <div className="flex items-center gap-4">
                      <button
                         onClick={handleConvert}
                         className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                     >
-                        Convert
+                        {t('common.convert')}
+                    </button>
+                    <button
+                        onClick={handleReset}
+                        className="px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600"
+                    >
+                        {t('common.reset')}
                     </button>
                 </div>
             </div>
